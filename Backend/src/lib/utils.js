@@ -16,5 +16,5 @@ export const generateToken = (userId, res) => {
     return token;
 };
 
-// http://locahost - not secure
+// http://localhost - not secure
 // http://crossmk.com - secure

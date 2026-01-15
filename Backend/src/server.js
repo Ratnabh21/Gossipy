@@ -1,4 +1,5 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 
 
 import authRoutes from "./routes/auth.route.js";
@@ -12,6 +13,7 @@ const app = express();
 const PORT = ENV.PORT || 8000;
 
 app.use(express.json()) // this is middleware 1under req.body
+app.use(cookieParser())
 
 
 app.use("/api/auth", authRoutes); 
