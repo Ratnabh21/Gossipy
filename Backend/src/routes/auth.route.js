@@ -5,14 +5,13 @@ import { arcjetProtection } from "../middleware/arcjet.middleware.js";
 
 const router = express.Router();
 
-router.get("/test", arcjetProtection, (req,res) => {
- res.status(200).json({message: "Test Route"});
-});
-router.post("/signup", signup);
-router.post("/login", arcjetProtection, login); 
-router.post("/logout", logout);
+router.use(arcjetProtection);
 
-router.put("/update-profile", protectRoute, updateProfile);
+router.post("/signup",  signup);
+router.post("/login",  login); 
+router.post("/logout",  logout);
+
+router.put("/update-profile",  protectRoute, updateProfile);
 
 router.get("/check", protectRoute, (req, res) => res.status(200).json(req.user));
 export default router;
