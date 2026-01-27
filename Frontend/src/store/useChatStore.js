@@ -11,14 +11,14 @@ export const useChatStore = create ((set, get) => ({
   selectedUser: null,
   isUsersLoading: false,
   isMessagesLoading: false,
-  isSoundEnabled: localStorage.getItem("isSoundEnabled") === true,
+  isSoundEnabled: JSON.parse(localStorage.getItem("isSoundEnabled")) === true,
 
   toggleSound: () => {
     localStorage.setItem("isSoundEnabled", !get().isSoundEnabled);
     set ({ isSoundEnabled: !get().isSoundEnabled });
   },
 
-  setActiveTab: (tab) => set({ ActiveTab: tab }),
+  setActiveTab: (tab) => set({ activeTab: tab }),
   setSelectedUser: (selectedUser) => set({ selectedUser }),
   
   getAllContacts: async() => {
@@ -29,7 +29,7 @@ export const useChatStore = create ((set, get) => ({
     } catch (error) {
         toast.error(error.response.data.message);
     } finally {
-        set({ isUsersLoading: flase });
+        set({ isUsersLoading: false });
     }
   },
     getMyChatPartners: async () => {
