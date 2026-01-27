@@ -3,6 +3,8 @@ import { generateToken } from "../lib/utils.js";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs"; // for secure hash user password
 import { ENV } from "../lib/env.js";
+import cloudinary from "../lib/cloudinary.js";
+
 
 
 export const signup = async (req, res) =>{
@@ -113,7 +115,7 @@ export const updateProfile = async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       { profilePic: uploadResponse.secure_url },
-      { new: ture } //return the updated user
+      { new: true } //return the updated user
     );
      
     res.status(200).json(updatedUser);
