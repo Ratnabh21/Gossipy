@@ -6,7 +6,7 @@ import UsersLoadingSkeleton from "./UsersLoadingSkeleton";
 function ContactList() {
   const { getAllContacts, allContacts, setSelectedUser, isUsersLoading } = useChatStore();
 
-   useEffect(() => {
+   useEffect(() => { 
     getAllContacts();
   }, [getAllContacts]);
 
