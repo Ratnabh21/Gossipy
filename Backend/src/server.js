@@ -15,7 +15,7 @@ const app = express();
 const PORT = ENV.PORT || 8000;
 
 
-app.use(express.json()) // this is middleware 1under req.body
+app.use(express.json({ limit:"5mb" })) // this is middleware 1under req.body
 app.use(cors({ origin:ENV.CLIENT_URL, credentials:true, }));
 app.use(cookieParser())
 
